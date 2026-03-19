@@ -148,7 +148,7 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-        String myPhrase = noun + verb + endingPunctuation;
+        String myPhrase = 'The '  + noun + ' is ' + verb + endingPunctuation;
         return myPhrase; 
 	}
 
@@ -181,8 +181,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        Boolean myDate = isDateTodayOrFuture(dt);
-    return true;
+    return !isDateInPast(dt);
         
     }
 
@@ -213,7 +212,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        return averageOfThreeNumbers(a, b, c);
+        double dblAvg = (a+b+c)/3;
+        return dblAvg;
     }
 
     /**
@@ -244,7 +244,7 @@ public with sharing class VariablesDataTypesOperators {
         // The result of the expression as it is right now is 43. 
         // You should add parentheses so that the result of the expression becomes 8.
         Integer answer = 48 - 15 + 5 * 2;
-        answer = 48 - (15 + (5 * 2));
+        answer = 48 - (15 + 5) * 2;
         return answer;
     }
 
@@ -297,11 +297,11 @@ public with sharing class VariablesDataTypesOperators {
      */
      public static Integer performDivisionAndCast(Double a, Double b) {
         // Perform the division and cast (round down) off the result.
-    //    // Double divisionResult = a/b => 0;
+           Double divisionResult = a/b;
+           Integer intDivisionResult = (Integer)divisionResult;
 
     //     // Write the code for type casting the divisionResult to an Integer
-    //     Integer divisionResult = a/b => 0;
-         return 1; //divisionResult
+         return intDivisionResult; //divisionResult
     }
 
     /**
@@ -315,8 +315,7 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
 
-     Decimal paycheck = hourlyRate * numberOfHours; 
-      paycheck = paycheck.setScale(2);
+     Decimal paycheck = (hourlyRate * numberOfHours); 
        return paycheck;
     }
 
@@ -347,7 +346,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The total cost after applying the sales tax.
      */
     public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        Decimal calculateTotalCost = ( pricePerUnit * numberOfUnits) * ( 0.05 + salesTaxRate);
+       Decimal calculateTotalCost = ( pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
         return  calculateTotalCost;
     }
 }
